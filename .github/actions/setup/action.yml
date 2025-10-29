@@ -1,0 +1,39 @@
+name: 'Setup'
+description: 'Setup Node.js and pnpm (via Corepack)'
+
+inputs:
+  node-version:
+    description: 'Node.js version'
+    required: false
+    default: '22.21.0'
+
+  pnpm-version:
+    description: 'pnpm version'
+    required: false
+    default: '10.19.0'
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: ${{ inputs.pnpm-version }}
+        
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+
+    - name: Show versions
+      shell: bash
+      run: |
+        node -v
+        npm -v
+        pnpm -v
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile

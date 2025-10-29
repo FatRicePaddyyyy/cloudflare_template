@@ -1,0 +1,69 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "backend",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-10-24",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "db-local",
+      "database_id": "<UUID>",
+      "migrations_dir": "drizzle",
+    },
+  ],
+  "vars": {
+    "BACKEND_URL": "http://localhost:8787",
+    "FRONTEND_URL": "http://localhost:3000",
+    "crossSubDomainCookies": "localhost",
+  },
+  "env": {
+    "preview":{
+      "name":"backend-preview",
+      "vars": {
+        "BACKEND_URL": "https://backend-preview.fatricepaddy.workers.dev",
+        "FRONTEND_URL": "https://frontend-preview.fatricepaddy.workers.dev",
+        "crossSubDomainCookies": ".fatricepaddy.workers.dev",
+      },
+      "observability": {
+        "logs": {
+          "enabled": false,
+          "head_sampling_rate": 1,
+          "invocation_logs": true,
+          "persist": true
+        }
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "db-preview",
+          "database_id": "58a516a8-2815-4be8-b9e6-9fe363f475c6",
+          "migrations_dir": "drizzle",
+        }
+      ]
+    },
+    "production": {
+      "name": "backend-production",
+      "vars": {
+        "BACKEND_URL": "https://backend-production.fatricepaddy.workers.dev",
+        "FRONTEND_URL": "https://frontend-production.fatricepaddy.workers.dev",
+        "crossSubDomainCookies": ".fatricepaddy.workers.dev",
+      },
+      "observability": {
+        "logs": {
+          "enabled": false,
+          "head_sampling_rate": 1,
+          "invocation_logs": true,
+          "persist": true
+        }
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "db-production",
+          "database_id": "d2c45921-7244-48ed-a2d4-0ca4d3a9be82",
+          "migrations_dir": "drizzle",
+        }
+      ]
+    }
+  }
+}

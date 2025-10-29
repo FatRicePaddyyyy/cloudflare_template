@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "@hono/swagger-ui": "^0.5.2",
+    "@hono/zod-openapi": "^1.1.4",
+    "better-auth": "^1.3.32",
+    "drizzle-orm": "^0.44.7",
+    "hono": "^4.10.2"
+  },
+  "devDependencies": {
+    "@types/sql.js": "^1.4.9",
+    "drizzle-kit": "^0.31.5",
+    "sql.js": "^1.13.0",
+    "wrangler": "^4.4.0"
+  }
+}

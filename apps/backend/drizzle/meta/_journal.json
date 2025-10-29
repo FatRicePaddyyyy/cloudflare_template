@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1761465626236,
+      "tag": "0000_20251026170025_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1761630988010,
+      "tag": "0001_20251028145626_create_categories_and_products",
+      "breakpoints": true
+    }
+  ]
+}
