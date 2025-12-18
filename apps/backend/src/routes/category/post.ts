@@ -164,7 +164,7 @@ export const createCategoryRouteHandler = app.openapi(
       if (!result.success || !result.data) {
         return ctx.json(
           {
-            success: false,
+            success: false as const,
             data: null,
             error: result.error ?? "プロダクトの作成に失敗しました",
           },
@@ -177,7 +177,7 @@ export const createCategoryRouteHandler = app.openapi(
       console.error("Create product error:", error);
       return ctx.json(
         {
-          success: false,
+          success: false as const,
           data: null,
           error: "プロダクトの作成中にエラーが発生しました",
         },
