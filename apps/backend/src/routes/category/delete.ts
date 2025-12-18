@@ -89,7 +89,7 @@ export const deleteCategoryRouteHandler = app.openapi(
       if (!result.success) {
         return ctx.json(
           {
-            success: false,
+            success: false as const,
             error: "カテゴリの削除に失敗しました",
           },
           500,
@@ -98,7 +98,7 @@ export const deleteCategoryRouteHandler = app.openapi(
 
       return ctx.json(
         {
-          success: true,
+          success: true as const,
           error: null,
         },
         200,
@@ -107,7 +107,7 @@ export const deleteCategoryRouteHandler = app.openapi(
       console.error("Delete category error:", error);
       return ctx.json(
         {
-          success: false,
+          success: false as const,
           error: "カテゴリの削除中にエラーが発生しました",
         },
         500,

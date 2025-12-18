@@ -101,7 +101,7 @@ export const getAllCategoriesAndProductsRouteHandler = app.openapi(
       if (!result.success || !result.data) {
         return ctx.json(
           {
-            success: false,
+            success: false as const,
             data: null,
             error: result.error ?? "カテゴリ・プロダクトの取得に失敗しました",
           },
@@ -114,7 +114,7 @@ export const getAllCategoriesAndProductsRouteHandler = app.openapi(
       console.error("Get all categories and products error:", error);
       return ctx.json(
         {
-          success: false,
+          success: false as const,
           data: null,
           error: "カテゴリ・プロダクトの取得中にエラーが発生しました",
         },
