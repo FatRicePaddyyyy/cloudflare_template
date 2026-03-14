@@ -29,12 +29,12 @@
 ```
 
 # セットアップ方法
-1. ```apps/backend/.env```を作成。
+1. ```apps/backend/.env```を作成し、適当な値を設定
 ```bash
 BETTER_AUTH_SECRET=
 SECRET_KEY=
 ```
-2. ```apps/frontend/.env```を作成。
+2. ```apps/frontend/.env```を作成
 ```bash
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8787
 ```
@@ -43,12 +43,17 @@ NEXT_PUBLIC_BACKEND_URL=http://localhost:8787
 pnpm install
 ```
 
-4. ```apps/backend```, ```apps/frontend```で以下のコマンドを実行
+4. ```apps/backend```でローカル D1 にマイグレーションを適用
+```bash
+npx wrangler d1 migrations apply db-local --local
+```
+
+5. ```apps/backend```, ```apps/frontend```でそれぞれ以下のコマンドを実行
 ```bash
 pnpm run dev
 ```
 
-5. 以下のコマンドを実行し、シードユーザーの作成
+6. 以下のコマンドを実行し、シードユーザーの作成
 ```bash
 curl -X POST "http://localhost:8787/api/v1/secret/create-seed-user" \
   -H "Authorization: Bearer <設定したSECRET_KEYの値>" \
@@ -59,6 +64,14 @@ curl -X POST "http://localhost:8787/api/v1/secret/create-seed-user" \
     "password": "admin123"
   }'
 ```
+
+7. ブラウザで以下にアクセス
+- Web画面: `http://localhost:3000`
+- API ドキュメント: `http://localhost:8787/docs`
+
+8. Web画面にアクセス後、以下のシードユーザーでログイン
+- email: `admin@example.com`
+- password: `admin123`
 
 # 技術スタック
 | 技術 | バージョン | 補足 |
