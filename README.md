@@ -2,7 +2,7 @@
 - Cloudflare×Typescript でのWebページの認証付きテンプレートです
 
 # アーキテクチャー
-
+![アーキテクチャー](docs/architecture.png)
 
 ```bash
 
