@@ -1,5 +1,5 @@
-- このリポジトリは[こちらのzennの記事](https://zenn.dev/fatricepaddyy/books/cf_sample_app)に対応するものです
-- Cloudflare×Typescript でのWebページの認証付きテンプレートです
+- このリポジトリは[こちらのZennの記事](https://zenn.dev/fatricepaddyy/books/cf_sample_app)に対応するものです
+- Cloudflare × TypeScript での Web ページの認証付きテンプレートです
 
 # アーキテクチャー
 ![アーキテクチャー](docs/project-architecture.png)
@@ -8,7 +8,7 @@
 
 ├── apps
 │   ├── backend
-│   │   ├── drizzl/ # マイグレーションファイルやスナップショット
+│   │   ├── drizzle/ # マイグレーションファイルやスナップショット
 │   │   ├── src/
 │   │   │   ├── index.ts # エンドポイントのエントリーポイント
 │   │   │   ├── lib/
@@ -20,7 +20,7 @@
 │   └── frontend/ # フロントエンド
 ├── docs
 │   ├── architecture.drawio
-│   └── architecture.png
+│   └── project-architecture.png
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -63,6 +63,8 @@ curl -X POST "http://localhost:8787/api/v1/secret/create-seed-user" \
 # 技術スタック
 | 技術 | バージョン | 補足 |
 | --- | --- | --- |
+| Cloudflare Workers | Wrangler 4.45.0 | backend / frontend ともに `pnpm-lock.yaml` 上の実解決バージョン。`compatibility_date` は backend が `2025-10-24`、frontend が `2025-03-01` |
+| Cloudflare D1 | バージョンなし | Cloudflare のマネージドサービス。`apps/backend/wrangler.jsonc` で D1 バインディングを設定 |
 | Hono | 4.11.1 | backend / frontend で利用 |
 | OpenAPI Hono | `@hono/zod-openapi` 1.1.5 | backend で OpenAPI 定義に利用 |
 | Next.js | 15.4.6 | frontend で利用 |
