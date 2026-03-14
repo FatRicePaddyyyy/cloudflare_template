@@ -1,4 +1,4 @@
-- このリポジトリは[こちらのZennの記事](https://zenn.dev/fatricepaddyy/books/cf_sample_app)に対応するものです
+- このリポジトリは[こちらのZennの記事](https://zenn.dev/fatricepaddyy/books/cf_sample_app)の成果物です
 - Cloudflare × TypeScript での Web ページの認証付きテンプレートです
 
 # アーキテクチャー
