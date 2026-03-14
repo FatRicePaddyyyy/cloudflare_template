@@ -63,10 +63,14 @@ curl -X POST "http://localhost:8787/api/v1/secret/create-seed-user" \
 # 技術スタック
 | 技術 | バージョン | 補足 |
 | --- | --- | --- |
-| Cloudflare Workers | Wrangler 4.45.0 | backend / frontend ともに `pnpm-lock.yaml` 上の実解決バージョン。`compatibility_date` は backend が `2025-10-24`、frontend が `2025-03-01` |
-| Cloudflare D1 | バージョンなし | Cloudflare のマネージドサービス。`apps/backend/wrangler.jsonc` で D1 バインディングを設定 |
-| Hono | 4.11.1 | backend / frontend で利用 |
-| OpenAPI Hono | `@hono/zod-openapi` 1.1.5 | backend で OpenAPI 定義に利用 |
-| Next.js | 15.4.6 | frontend で利用 |
-| Better Auth | 1.3.32 | backend / frontend で利用 |
-| Drizzle | `drizzle-orm` 0.44.7 / `drizzle-kit` 0.31.5 | backend で利用 |
+| Cloudflare Workers | Wrangler 4.45.0 | 低コストで、エッジで高速に動かせるため |
+| Cloudflare D1 | バージョンなし | 低コストで、Workers と近い場所に置けるため低レイテンシにしやすいため |
+| Hono | 4.11.1 | Hono RPC が使いやすく、薄いフレームワークで自由度が高いため |
+| OpenAPI Hono | `@hono/zod-openapi` 1.1.5 | OpenAPI 定義と型を一緒に管理しやすく、API ドキュメント生成もしやすいため |
+| Next.js | 15.4.6 | 機能が豊富で、情報量が多く AI コーディング支援とも相性が良いため |
+| Better Auth | 1.3.32 | 認証に必要な機能が揃っており、セッション管理まで含めて組み込みやすいため |
+| Drizzle | `drizzle-orm` 0.44.7 / `drizzle-kit` 0.31.5 | エッジで動かすことができ、スキーマからクエリまで型安全に扱いやすいため |
+
+# 制作背景
+- 課題: Cloudflare Workers用のモノレポのStarter Kitが存在しない
+- 目的: Cloudflare Workers用のモノレポのStarter Kitにより、今後の新プロジェクトの開発速度向上
